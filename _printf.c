@@ -11,7 +11,7 @@
 
 int _printf(const char *format, ...)
 {
-	form[] = {
+	form f[] = {
 		{'c', printchar},
 		{'s', printstring},
 		{'%', printpercent},
@@ -56,7 +56,7 @@ int _printf(const char *format, ...)
 			i++;
 			continue;
 		}
-		_putchar[format[i]];
+		_putchar(format[i]);
 		i++;
 	}
 
