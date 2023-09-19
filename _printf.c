@@ -12,9 +12,12 @@
 int _printf(const char *format, ...)
 {
 	form[] = {
-		{'c', _putchar},
+		{'c', printchar},
 		{'s', printstring},
-		{'%', printpercent}
+		{'%', printpercent},
+		{'d', printint},
+		{'i', printint},
+		{'\0',NULL}
 	};
 	va_list params;
 	void (*summonprint)(va_list);
