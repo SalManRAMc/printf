@@ -23,6 +23,18 @@ typedef struct format
 /*Prints a character*/
 int _putchar(char c);
 
+/**/
+void printchar(va_list c);
+
+/**/
+void printstring(va_list str);
+
+/**/
+void printpercent(va_list percent);
+
+/**/
+void printint(va_list num);
+
 /*Prints all*/
 int _printf(const char *format, ...);
 
