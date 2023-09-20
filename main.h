@@ -32,9 +32,6 @@ int printchar(va_list c);
 int printstring(va_list str);
 
 /**/
-int printpercent(va_list percent);
-
-/**/
 int printint(va_list num);
 
 /*Prints all*/

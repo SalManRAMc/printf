@@ -63,30 +63,15 @@ int printstring(va_list str)
 }
 
 /**
- * printpercent
- *
- *@percent: prints a percentage mark
- *
- * Return: 1 on success
- */
-
-int printpercent(__attribute__((unused)) va_list percent)
-{
-
-	_putchar('%');
-	return (1);
-}
-
-/**
  *  printint - prints an integer
  *
  * @num - number to be printed
  */
 
-/*int printint(va_list num)
+int printint(va_list num)
 {
 	int digit = va_arg(num, int);
 
 	return (1);
-}*/
+}
 

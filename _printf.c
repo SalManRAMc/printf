@@ -14,7 +14,6 @@ int _printf(const char *format, ...)
 	form f[] = {
 		{'c', printchar},
 		{'s', printstring},
-		{'%', printpercent},
 		{'d', printint},
 		{'i', printint},
 		{'\0',NULL}
@@ -33,6 +32,11 @@ int _printf(const char *format, ...)
 
 		while (f[j].token != '\0' && format[i] == '%')
 		{
+			if (format[i + 1] == '%')
+			{
+				_putchar('%');
+			}
+
 			if (f[j].token == format[i + 1])
 			{
 				flag = 1;
