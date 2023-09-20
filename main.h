@@ -1,13 +1,13 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
 
 #define BUF_FLUSH -1
 #define BUF_SIZE 1024
+
 /**
  * form - struct data type that contains formatted token and corresponding
  * function pointer
@@ -22,8 +22,8 @@ typedef struct format
 	int (*funcall)(va_list);
 } form;
 
-/*Prints a character*/
-int _putchar(char c);
+/*writes to stdout*/
+int _putchar(int c);
 
 /**/
 int printchar(va_list c);

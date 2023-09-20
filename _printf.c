@@ -26,17 +26,15 @@ int _printf(const char *format, ...)
 
 	va_start(params, format);
 
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
 
 	while (format[i] != '\0')
 	{
-
 		while (f[j].token != '\0' && format[i] == '%')
 		{
-			if (format[i + 1] == '%')
-			{
-				_putchar('%');
-			}
-
 			if (f[j].token == format[i + 1])
 			{
 				flag = 1;
@@ -62,11 +60,11 @@ int _printf(const char *format, ...)
 		}
 		_putchar(format[i]);
 		i++;
+
 	}
 
 	va_end(params);
 	_putchar('\n');
-	_putchar(BUF_FLUSH);
 
 	return (argnumber);
 }

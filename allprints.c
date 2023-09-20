@@ -1,32 +1,6 @@
 #include "main.h"
 
 /**
- *_putchar - writes the character c to stdout
- *@c: The character to print
- *
- *Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
-*/
-
-int _putchar(char c)
-{
-	static int i;
-	static char printbuffer[BUF_SIZE];
-
-	if (c == BUF_FLUSH || i >= BUF_SIZE)
-	{
-		return (write(1, printbuffer, i));
-		i = 0;
-	}
-	if (c != BUF_FLUSH)
-	{
-		printbuffer[i] = c;
-		i++;
-	}
-	return (1);
-}
-
-/**
  * printchar - prints a character
  *
  *@c: character to be printed
@@ -58,6 +32,7 @@ int printstring(va_list str)
 	while (editable_string[i] != '\0')
 	{
 		_putchar(editable_string[i]);
+		i++;
 	}
 	return (1);
 }
@@ -74,4 +49,3 @@ int printint(va_list num)
 
 	return (1);
 }
-
