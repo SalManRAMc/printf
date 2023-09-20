@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 		{'\0',NULL}
 	};
 	va_list params;
-	void (*summonprint)(va_list);
+	int (*summonprint)(va_list);
 	int i = 0, j = 0;
 	int argnumber = 0, flag = 0;
 
@@ -62,6 +62,7 @@ int _printf(const char *format, ...)
 
 	va_end(params);
 	_putchar('\n');
+	_putchar(BUF_FLUSH);
 
 	return (argnumber);
 }

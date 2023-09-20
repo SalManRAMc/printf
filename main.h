@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#define BUF_FLUSH -1
+#define BUF_SIZE 1024
 /**
  * form - struct data type that contains formatted token and corresponding
  * function pointer
@@ -17,23 +19,23 @@
 typedef struct format
 {
 	char token;
-	void (*funcall)(va_list);
+	int (*funcall)(va_list);
 } form;
 
 /*Prints a character*/
 int _putchar(char c);
 
 /**/
-void printchar(va_list c);
+int printchar(va_list c);
 
 /**/
-void printstring(va_list str);
+int printstring(va_list str);
 
 /**/
-void printpercent(va_list percent);
+int printpercent(va_list percent);
 
 /**/
-void printint(va_list num);
+int printint(va_list num);
 
 /*Prints all*/
 int _printf(const char *format, ...);

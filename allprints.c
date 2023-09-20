@@ -10,7 +10,20 @@
 
 int _putchar(char c)
 {
-		return (write(1, &c, 1));
+	static int i;
+	static char printbuffer[BUF_SIZE];
+
+	if (c == BUF_FLUSH || i >= BUF_SIZE)
+	{
+		return (write(1, printbuffer, i));
+		i = 0;
+	}
+	if (c != BUF_FLUSH)
+	{
+		printbuffer[i] = c;
+		i++;
+	}
+	return (1);
 }
 
 /**
@@ -18,32 +31,50 @@ int _putchar(char c)
  *
  *@c: character to be printed
  */
-
-void printchar(va_list c)
+int printchar(va_list c)
 {
-	_putchar(va_arg(c, int));
+	char printed_char = va_arg(c, int);
+	_putchar(printed_char);
+	return (1);
 }
 
 /**
  *printstring - prints a string
  *
  *@str: string to be printed
+ *
+ * Return: -1 on failure, 1 on success
  */
 
-void printstring(va_list str)
+int printstring(va_list str)
 {
+	char *editable_string;
+	int i = 0;
 
+	editable_string = va_arg(str, char *);
+	if (editable_string == NULL)
+		editable_string = "(nil)";
+
+	while (editable_string[i] != '\0')
+	{
+		_putchar(editable_string[i]);
+	}
+	return (1);
 }
 
 /**
  * printpercent
  *
  *@percent: prints a percentage mark
+ *
+ * Return: 1 on success
  */
 
-void printpercent(va_list percent)
+int printpercent(__attribute__((unused)) va_list percent)
 {
-	_putchar(va_arg(percent, int));
+
+	_putchar('%');
+	return (1);
 }
 
 /**
@@ -52,8 +83,10 @@ void printpercent(va_list percent)
  * @num - number to be printed
  */
 
-void printint(va_list num)
+/*int printint(va_list num)
 {
 	int digit = va_arg(num, int);
 
-}
+	return (1);
+}*/
+
