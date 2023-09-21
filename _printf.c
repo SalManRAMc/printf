@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 		{
 			write(1, format, 1);
 		}
-		else
+		/*else
 		{
 			format++;
 			if (*format == '\0')
@@ -51,7 +51,7 @@ int _printf(const char *format, ...)
 				write(1, format, 1);
 				charcount += strlen;
 			}
-		}
+		}*/
 		format++;
 	}
 	va_end(list);
