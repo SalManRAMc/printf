@@ -1,70 +1,26 @@
 #include "main.h"
-
 /**
- *
- * _printf - produces output according to format
- *
- *@format: character string, composed of zero more directives
- *@...: indefinite no. of args for vars etc.
- *
+ *_printf - produces output according to a format.
+ *@format: character string.
+ *Return: the number of characters printed.
  */
-
 int _printf(const char *format, ...)
 {
-	form f[] = {
-		{'c', printchar},
-		{'s', printstring},
-		{'d', printint},
-		{'i', printint},
-		{'\0',NULL}
-	};
-	va_list params;
-	int (*summonprint)(va_list);
-	int i = 0, j = 0;
-	int argnumber = 0, flag = 0;
+	int c = 0;
+	va_list list;
 
-
-	va_start(params, format);
-
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
+	if (format == NULL)
 		return (-1);
 
-	while (format[i] != '\0')
+	va_start(list, format);
+	while (*format)
 	{
-		while (f[j].token != '\0' && format[i] == '%')
+		if (*format != '%')
 		{
-			if (f[j].token == format[i + 1])
-			{
-				flag = 1;
-				argnumber += 1;
-
-				summonprint = f[j].funcall;
-				summonprint(params);
-			}
-			j++;
-
-			if (flag == 1)
-			{
-				i++;
-			}
-			flag = 0;
+			write(1, format, 1);
 		}
-
-		j = 0;
-		if (format[i - 1] == '%')
-		{
-			i++;
-			continue;
-		}
-		_putchar(format[i]);
-		i++;
-
+		format++;
 	}
-
-	va_end(params);
-	_putchar('\n');
-
-	return (argnumber);
+	va_end(list);
+	return (c);
 }
