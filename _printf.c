@@ -6,7 +6,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int argcount = 0, strlen = 0;
+	int charcount = 0, strlen = 0;
 	char printable_char, *str;
 	va_list list;
 
@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 			{
 				printable_char = va_arg(list, int);
 				write(1, &c, 1);
-				argcount++;
+				charcount++;
 			}
 
 			else if (*format == 's')
@@ -42,18 +42,18 @@ int _printf(const char *format, ...)
 					strlen++;
 
 				write(1, str, strlen);
-				argcount++;
+				charcount++;
 
 			}
 
 			else if (*format == '%')
 			{
 				write(1, format, 1);
-				argcount++;
+				charcount += strlen;
 			}
 		}
 		format++;
 	}
 	va_end(list);
-	return (argcount);
+	return (charcount);
 }
